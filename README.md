@@ -87,6 +87,7 @@ Options are:
 - `rawProps`: whether to skip Jade attribute -> HTML property conversion; this is set to true in the default Snabbdom configuration
 - `runtime`: optional override to include any arbitrary Virtual DOM library that defines the `h()` hyperscript function. E.g. `var h = require('my-special-lib/h');`
 - `vdom`: name of the Virtual DOM library configuration to load (currently either `virtual-dom` or `snabbdom`).
+- `capitalConstructors`: when true, tag names that start with a capital letter will be treated as custom element constructors that have a `tagName` static property that is set to the registered name of the constructor. Useful for when you are trying to avoid a namign conflict or if you want to be deliberate about which modules and tempaltes depend on which elements.
 
 Returns a string that looks like:
 

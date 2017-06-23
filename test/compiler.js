@@ -71,6 +71,16 @@ describe(`Compiler`, function() {
     expect(js).to.contain(`+ (x - 2) +`);
   });
 
+  describe(`capitalConstructors`, function () {
+    it(`when false does not pass capitalized tagnames to h as a constructor`, function() {
+      expect(testCompilation(`custom-element-constructor`, {capitalConstructors: false}))
+        .to.contain(`h("MyCustomElementConstructor")`);
+    });
+    it(`when true passes capitalized tagnames to h as a constructor`, function() {
+      expect(testCompilation(`custom-element-constructor`, {capitalConstructors: true}))
+        .to.contain(`h(MyCustomElementConstructor.tagName)`);
+    });
+  });
   it(`compiles if statements`, function() {
     let js = testCompilation(`if`);
     expect(js).not.to.contain(`undefined(`);
